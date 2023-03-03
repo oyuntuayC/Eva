@@ -15,7 +15,7 @@ function makeid() {
 }
 
 //the base url at which RASA is running
-var base_url = "http://localhost:5005";
+var base_url = "http://localhost:80";
 
 //A unique client id so that the data doesn't get mismatched
 var client_id = makeid();
