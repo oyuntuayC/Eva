@@ -15,7 +15,7 @@ function makeid() {
 }
 
 //the base url at which RASA is running
-var base_url = window.location.origin+":80";
+var base_url = window.location.origin;
 
 //A unique client id so that the data doesn't get mismatched
 var client_id = makeid();
