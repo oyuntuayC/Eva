@@ -49,7 +49,7 @@ class ActionConfirmAppointment(Action):
         if not order or not time or not name_professor_list:
             return []
         dispatcher.utter_message(f"Just to confirm, your appointment with {name_professor_list[order-1]} is scheduled on {time.lower()}~")
-        return [SlotSet("name_professor", name_professor_list[order-1]),SlotSet("ordinal", None), SlotSet("name_professor_list", None)]
+        return [SlotSet("name_professor", name_professor_list[order-1])]
             
 class ActionSetAppointment(Action):
     def name(self) -> str:
@@ -116,7 +116,7 @@ class ActionResetAppointmentForm(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        return [SlotSet("name_professor", None), SlotSet("time_appointment", None)]
+        return [SlotSet("name_professor", None), SlotSet("time_appointment", None),SlotSet("ordinal", None), SlotSet("name_professor_list", None)]
 
 class ActionResetOfficeForm(Action):
 
@@ -127,7 +127,7 @@ class ActionResetOfficeForm(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        return [SlotSet("name_professor", None)]
+        return [SlotSet("name_professor", None),SlotSet("ordinal", None), SlotSet("name_professor_list", None)]
        
 class ActionResetNameMe(Action):
 
@@ -320,6 +320,6 @@ class ActionConfirmNameOffice(Action):
             dispatcher.utter_message(
                 text=f"Are you looking for {name_professor_list[order-1]}?"
             )
-            return [SlotSet("name_professor", name_professor_list[order-1]), SlotSet("name_professor_list", None), SlotSet("ordinal",None)]
+            return [SlotSet("name_professor", name_professor_list[order-1])]
         else:
             return []
