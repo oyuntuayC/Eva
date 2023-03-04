@@ -65,7 +65,7 @@ class ActionSetAppointment(Action):
         name_user = tracker.get_slot("name_user")
         time = tracker.get_slot("time_appointment")
         # connect to the database
-        conn = sqlite3.connect('D:/rasa2/appointments.db')
+        conn = sqlite3.connect('./appointments.db')
         c = conn.cursor()
         # create the appointments table if it doesn't exist
         # c.execute('''CREATE TABLE IF NOT EXISTS appointments (name_user text, name_professor text, time_from text, time_to text, time_type, time_grain)''')
