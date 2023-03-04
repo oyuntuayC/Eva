@@ -1,10 +1,10 @@
 import openai
 import os
-from dotenv import load_dotenv
-from rasa.core.actions import Action
-from rasa.core.events import SlotSet
+#from dotenv import load_dotenv
+from rasa_sdk import Action
+from rasa_sdk.events import SlotSet
 
-load_dotenv()
+#load_dotenv()
 #openai.api_key = os.getenv("OPENAI_API_KEY")
 #openai.api_key = "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"
 openai.api_key = "sk-1psKe0vLCz4mlPj9"
@@ -24,4 +24,5 @@ class ActionGPT3Fallback(Action):
             temperature=0.5,
         ).choices[0].text
         dispatcher.utter_message(text=response)
-        return [SlotSet("request", request), SlotSet("response", response)]
+        #return [SlotSet("request", request), SlotSet("response", response)]
+        return []

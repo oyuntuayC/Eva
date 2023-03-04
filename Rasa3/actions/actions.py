@@ -34,7 +34,7 @@ import pandas as pd
 import os
 import sqlite3
 
-from gpt3_fallback import ActionGPT3Fallback
+from .gpt3_fallback import ActionGPT3Fallback
 
 class ActionConfirmAppointment(Action):
     def name(self) -> Text:
