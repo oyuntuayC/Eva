@@ -1,0 +1,181 @@
+version: '3.1'
+intents:
+- chitchat
+- affirm
+- info_name
+- info_user_name
+- deny
+- find_name
+- goodbye
+- greet
+- thankyou
+- make_appointment
+- make_appointment_name
+- mood_great
+- mood_unhappy
+- date_time
+- ordinal
+- how_are_you
+- bot_name
+- bot_challenge
+responses:
+  utter_greet_else:
+  - text: What else could I do for you?
+  utter_ask_name_again:
+  - text: Can you repeat the name?
+  utter_greet:
+  - text: Hi! How can I help you?
+  - text: Hi there! How can I help you today?
+  - text: Good day! How can I assist you?
+  - text: Hi, how can I help you today?
+  - text: Hello! How may I assist you today?
+  - text: Good day! How can I be of assistance?
+  - text: Hi! Is there anything I can help you with?
+  - text: Hello! What can I do for you today?
+  utter_goodbye:
+  - text: Goodbye! It was nice chatting with you.
+  - text: See you next time! Goodbye.
+  - text: Bye-bye!
+  - text: Until next time. Bye!
+  - text: Adios!
+  utter_noproblem:
+  - text: You're welcome!
+  - text: Not a problem!
+  - text: It was my pleasure!
+  - text: Anytime!
+  - text: Don't mention it!
+  - text: My pleasure!
+  - text: Happy to help!
+  - text: It's nothing!
+  - text: No worries!
+  - text: Sure thing!
+  utter_confirm_name_office:
+  - text: Are you looking for {name_professor}?
+  utter_confirm_name_appointment:
+  - text: Just to confirm, your appointment with {name_professor} is scheduled on {time_appointment}~
+  utter_office:
+  - text: His/Her office is at 55.119
+  utter_ask_appointment_form_name_professor:
+  - text: Sure! Who are you going to make an appointment with?
+  utter_ask_appointment_form_name_user:
+  - text: Could I have your name?
+  utter_ask_appointment_form_time_appointment:
+  - text: And when do you want the appointment to be?
+  utter_ask_office_form_name_professor:
+  - text: Could you please repeat the name? Thank you!
+  utter_ask_name:
+  - text: Can I have your name?
+  utter_appointment_confirmed:
+  - text: All set! You now have an appointment with {name_professor}.
+  utter_chitchat/ask_building_history:
+  - text: "This building is located in the 22@ District of Barcelona, an old industrial part of the city that has been renewed with self-sufficient technological buildings. It's part of the old 'Can Framis' factory block, which used to consist of two industrial buildings."
+  utter_chitchat/ask_building_name:
+  - text: This is the Tànger building of University Pompeu Fabra
+    image: https://www.upf.edu/documents/195583013/199136754/poblenou-tanger.png
+  utter_chitchat/ask_building_address:
+  - text: "The address of this building is Tànger, 122-140 08018 Barcelona. You can get here by:\n
+      Metro: Line 1 Glòries\n
+      Tram: T4 Glòries (Ca l'Aranyó) - T5 and T6 Glòries (La Farinera)\n
+      Bus: H14, B25, B20, 192, 92, 42, 40, 7, 6"
+    image: https://www.upf.edu/documents/195583013/199136754/mapa-poblenou.png
+  utter_chitchat/ask_room:
+  - text: "If you're looking for a meeting room, we do have the Tanger room on the first floor. It can accommodate up to 44 people. You can book it through the link: https://egp.upf.edu/jira/servicedesk/customer/portal/12/create/344"
+  utter_chitchat/ask_restroom:
+  - text: Restrooms are located on the southwest side of each floor, next to the elevators
+  utter_bot_name:
+  - text: My name is Eva, I'm a voice assistant of Tanger building.
+  utter_feel_great:
+  - text: Great! how can I help you?
+entities:
+- PERSON
+- time
+- ordinal
+slots:
+  name_professor:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: PERSON
+      role: professor
+    - type: from_entity
+      entity: PERSON
+      intent: info_name
+  name_user:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: PERSON
+      role: user
+    - type: from_entity
+      entity: PERSON
+      intent: info_name
+  time_appointment:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: time
+  requested_slot:
+    type: categorical
+    influence_conversation: true
+    values:
+      - name_professor
+      - name_user
+    mappings:
+    - type: custom
+  name_professor_list:
+    type: list
+    mappings:
+    - type: custom
+  ordinal:
+    type: float
+    mappings:
+    - type: from_entity
+      entity: ordinal
+      intent: ordinal
+  button_list:
+    type: list
+    mappings:
+    - type: custom
+session_config:
+  session_expiration_time: 30
+  carry_over_slots_to_new_session: false
+actions:
+- utter_greet_else
+- utter_ask_name_again
+- utter_greet
+- utter_goodbye
+- utter_confirm_name_office
+- utter_confirm_name_appointment
+- utter_office
+- utter_ask_appointment_form_name_professor
+- utter_ask_appointment_form_name_user
+- utter_ask_appointment_form_time_appointment
+- utter_ask_office_form_name_professor
+- utter_ask_name
+- utter_appointment_confirmed
+- utter_bot_name
+- utter_feel_great
+
+- action_reset_appointment_form
+- action_reset_office_form
+- action_reset_name_user
+- action_fetch_professor_room
+- action_set_appointment
+- action_start
+- action_confirm_appointment
+- action_confirm_name_office
+- action_ask_appointment_form_ordinal
+- action_ask_office_form_ordinal
+
+- action_validate_slot_mappings
+forms:
+  appointment_form:
+    required_slots:
+      - name_professor
+      - ordinal
+      - name_user
+      - time_appointment
+  office_form:
+    required_slots:
+      - name_professor
+      - ordinal

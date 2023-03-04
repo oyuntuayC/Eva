@@ -1,0 +1,243 @@
+version: "3.1"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - Hi
+    - Hi.
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+- intent: thankyou
+  examples: |
+    - Thank you
+    - Thanks a lot
+    - Many thanks
+    - Much obliged
+    - I appreciate it
+    - Thank you kindly
+    - Thank you so much
+    - I'm grateful
+    - That's very kind of you
+    - I can't thank you enough
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - Yes.
+    - Yeah.
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+- intent: find_name
+  examples: |
+    - How can I find [Joan]{"entity":"PERSON", "role":"professor"}?
+    - Do you know where is [Antonio]{"entity":"PERSON", "role":"professor"}?
+    - Where is [Cristina]{"entity":"PERSON", "role":"professor"}'s office?
+    - Where is [Jesus]{"entity":"PERSON", "role":"professor"}?
+    - Do you know where is [Miquel]{"entity":"PERSON", "role":"professor"}'s office?
+    - Do you know where is the office of [Maria]{"entity":"PERSON", "role":"professor"}?
+    - Do you know where can I find [Philip]{"entity":"PERSON", "role":"professor"}
+    - Do you know where could I find [Lorenzo]{"entity":"PERSON", "role":"professor"}
+    - I'm looking for [Carlos]{"entity":"PERSON", "role":"professor"}.
+    - I'm looking for [Andres]{"entity":"PERSON", "role":"professor"}.
+- intent: make_appointment
+  examples: |
+    - Could I make an appointment?
+    - Can you schedule an appointment for me?
+    - Can I make an appointment?
+    - Could I make an appointment here?
+    - Can I make an appointment with [Oscar]{"entity":"PERSON", "role":"professor"}?
+    - Can I book an appointment with [Pablo]{"entity":"PERSON", "role":"professor"}?
+    - Can I book an appointment with [Nuria]{"entity":"PERSON", "role":"professor"}?
+    - Can I make an appointment with [Mario]{"entity":"PERSON", "role":"professor"}?
+    - Could I make an appointment with [Marti]{"entity":"PERSON", "role":"professor"}?
+    - Could I make an appointment with [Jordi]{"entity":"PERSON", "role":"professor"}?
+    - Could I have an appointment with [Olga]{"entity":"PERSON", "role":"professor"}?
+    - Could I have an appointment with [Miquel]{"entity":"PERSON", "role":"professor"}?
+    - Could I make an appointment with [Carlos]{"entity":"PERSON", "role":"professor"}?
+    - Could I make an appointment with [Silvia]{"entity":"PERSON", "role":"professor"}?
+- intent: info_name
+  examples: |
+    - [Nuria](PERSON).
+    - [Jose](PERSON).
+    - [Silvia](PERSON).
+    - [Javier](PERSON).
+    - [Jesus](PERSON).
+    - [Mario](PERSON).
+    - with Nuria(PERSON).
+- intent: info_user_name
+  examples: |
+    - My name is [Simone]{"entity":"PERSON", "role":"user"}.
+    - I'm [Laura]{"entity":"PERSON", "role":"user"}.
+    - It's [Alex]{"entity":"PERSON", "role":"user"}.
+    - My name is [Pablo]{"entity":"PERSON", "role":"user"}.
+    - I'm [Judith]{"entity":"PERSON", "role":"user"}.
+    - It's [Joana]{"entity":"PERSON", "role":"user"}.
+    - Yes, my name is [Davinia]{"entity":"PERSON", "role":"user"}.
+    - Yeah, it's [Rafael]{"entity":"PERSON", "role":"user"}.
+    - Of course, it's [Antonio]{"entity":"PERSON", "role":"user"}.
+    - Sure, I'm [alberto]{"entity":"PERSON", "role":"user"}.
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+- intent: date_time
+  examples: |
+    - This Friday, at around 7:00 pm.
+    - Let's meet on Saturday, at around noon.
+    - Maybe next Tuesday, at 3:00 pm?
+    - at 8:30 pm on Wednesday night.
+    - Let's do it on Thursday morning at 9:00 am.
+    - How about on Friday, around 12:30 pm.
+    - on Saturday night, starting at 7:00 pm.
+    - Could you make it on next Monday, at around 11:00 am.
+    - Please schedule it on Wednesday afternoon, at 2:00 pm.
+    - Next Monday morning at 9.
+- intent: chitchat/ask_building_history
+  examples: |
+    - Can you tell me a little bit about the history of this building?
+    - Could you introduce this building?
+    - Do you know the history of this building?
+- intent: chitchat/ask_building_name
+  examples: |
+    - What's the name of this building?
+    - What is this building?
+    - Could you tell me the name of this building?
+- intent: chitchat/ask_building_address
+  examples: |
+    - Can you tell me the address of this building?
+    - I'm not sure how to get here. Can you give me directions?
+    - I don't know the area. Can you give me directions?
+    - I'm not sure where it is. Can you tell me how to get there?
+    - Can you tell me which street it's on?
+    - Can you tell me how to get here by bus?
+    - Could you please tell me how to get here by metro?
+    - Do you know how to get here by tram?
+    - How can I get here?
+- intent: chitchat/ask_room
+  examples: |
+    - Could you please tell me if there is a conference room?
+    - Do you know if this building has any meeting rooms that can be reserved?
+    - Do you know if this building has any event spaces that can be reserved? 
+    - Could you please tell me if there is a study area in this building?
+    - Do you know if there is a room for me to work on my project?
+    - I'm attending a workshop in the building and I'm looking for the conference room.
+    - I needs to use a classroom for a study session. Do you know if there's one available?
+    - I need to book a meeting room for tomorrow. Can you let me know if there's one available?
+    - I'm looking for a conference room for our meeting. Can you tell me where they're located?
+- intent: chitchat/ask_restroom
+  examples: |
+    - Where can I find the restroom in this building?
+    - could you tell me where the restroom is located in this building?
+    - I was wondering if you could point me in the direction of the nearest restroom?
+    - Could you tell me where I can find the restroom in this building?
+    - I'm looking for the restroom. Can you tell me which floor it's on?
+    - I need to use the restroom but I'm not sure where it is. Can you give me directions?
+    - could you let me know where the nearest restroom is located?
+    - Do you know where is the restroom?
+    - I want to use the restroom.
+    - Do you know where is the toilet?
+    - I need to go to the restroom.
+- intent: ordinal
+  examples: |
+    - [1st](ordinal)
+    - [2nd](ordinal)
+    - [3rd](ordinal)
+    - [6th](ordinal)
+    - [13th](ordinal)
+    - [21st](ordinal)
+    - [First](ordinal)
+    - [Second](ordinal)
+    - [Eleventh](ordinal)
+    - [Third](ordinal)
+- intent: how_are_you
+  examples: |
+    - Hi, How are you?
+    - Hello, How are you doing?
+    - How's everything going?
+    - How are things?
+    - How are you feeling today?
+    - What's up with you?
+    - How have you been?
+    - How's your day going so far?
+    - What's new with you?
+- intent: bot_name
+  examples: |
+    - What's your name?
+    - Can I have your name, please?
+    - May I know your name?
+    - Could you tell me your name, please?
+    - Who are you?
+- intent: bot_challenge
+  examples: |
+    - Are you robot?
+    - Are you a bot?
+    - Are you an AI?
+    - Are you automated?
+    - Are you a computer program?
+    - Are you a virtual assistant?
+    - Are you a digital assistant?
+    - Are you an intelligent machine?
+    - Are you a chatbot?
+    - Are you a machine learning model?
+    - Are you a natural language processing system?
