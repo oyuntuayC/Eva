@@ -249,9 +249,9 @@ class ValidateAllSlots(ValidationAction):
         name_professor_list=[]
         name_professor_list = findProfessorName(name_professor)
         if name_professor_list:
-            if len(name_professor_list) == 1:
+            if len(name_professor_list) > 1:
                 return {"name_professor_list": name_professor_list}
-            elif len(name_professor_list) > 1:
+            elif len(name_professor_list) == 1:
                 return {"name_professor_list": name_professor_list, "ordinal": 1, "requested_slot": None}
         else:
             dispatcher.utter_message("Sorry, we can't find anyone with this name.")
