@@ -63,6 +63,9 @@ var chatWindow = new Bubbles(
                   );
                 } else {
                   answers.push(response[i]["text"]);
+                  //SpeechSynthesis
+                  var msg = new SpeechSynthesisUtterance(response[i]["text"]);
+                  window.speechSynthesis.speak(msg);
                 }
 
                 // Checks if there are buttons for the RASA response
