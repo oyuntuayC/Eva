@@ -1,0 +1,39 @@
+/* style user input field */
+.bubble.reply-freeform {
+	margin: 8px 0 !important;
+}
+.bubble, .bubble-typing {
+	background: rgba(200, 16, 46, 1) !important;
+	color:rgb(250 250 250 / 95%) !important;
+	border-radius: 15px !important;
+}
+.bubble.reply:not(.bubble-picked) .bubble-content .bubble-button:hover, .bubble.reply .bubble-content .bubble-button.bubble-pick{
+	background:rgb(255 255 255) !important;
+}
+.bubble.reply .bubble-content .bubble-button{
+	color:black !important;
+}
+.bubble.reply{
+	background: transparent !important;
+}
+.bubble-button{
+	border-radius: 15px !important;
+}
+.bubble-wrap{
+	padding-right: 10px;
+}
+.input-wrap{
+	padding:10px;
+	display:flex;
+	flex-direction:row
+}
+.speech-button{
+	width:26px;
+	cursor:pointer;
+	border-radius:50% !important;
+	margin-left: 5px;
+	flex-shrink: 0;
+}
+#chat > div.input-wrap > textarea{
+	resize:none;
+}
