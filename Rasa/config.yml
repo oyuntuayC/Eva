@@ -35,7 +35,7 @@ pipeline:
     dimensions: ["PERSON"]
   - name: DucklingEntityExtractor
     url: "http://localhost:8000"
-    dimensions: ["time","ordinal"]
+    dimensions: ["time", "ordinal"]
     locale: "en_GB"
     timezone: "Europe/Madrid"
   - name: ResponseSelector
@@ -75,4 +75,4 @@ policies:
     constrain_similarities: true
     # model_confidence: softmax
 
-#fallback_action_name: "action_gpt3_fallback"
+fallback_action_name: "action_gpt3_fallback"
