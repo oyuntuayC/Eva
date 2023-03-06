@@ -22,17 +22,21 @@
 .bubble-wrap{
 	padding-right: 10px;
 }
-.input-wrap{
-	padding:10px;
-	display:flex;
-	flex-direction:row
+.input-wrap {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
-.speech-button{
-	width:26px;
-	cursor:pointer;
-	border-radius:50% !important;
-	margin-left: 5px;
-	flex-shrink: 0;
+.speech-button {
+    width: 26px;
+    height: 35px;
+    cursor: pointer;
+    border-radius: 50% !important;
+    margin-left: 5px;
+    flex-shrink: 0;
+	padding: 8px 12px;
+	margin-bottom: 0;
 }
 #chat > div.input-wrap > textarea{
 	resize:none;

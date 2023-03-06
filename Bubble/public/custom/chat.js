@@ -20,6 +20,17 @@ var base_url = window.location.origin;
 //A unique client id so that the data doesn't get mismatched
 var client_id = makeid();
 
+//request list of voices
+let voices = [];
+voices = window.speechSynthesis.getVoices();
+var voice_id = 0;
+for (let i = 0; i < voices.length; i++) {
+  if (voices[i].name === "Microsoft Aria Online (Natural) - English (United States)") {
+    voice_id = i;
+    break;
+  }
+}
+
 var chatWindow = new Bubbles(
   document.getElementById("chat"),
   "chatWindow",
@@ -65,6 +76,7 @@ var chatWindow = new Bubbles(
                   answers.push(response[i]["text"]);
                   //SpeechSynthesis
                   var msg = new SpeechSynthesisUtterance(response[i]["text"]);
+                  msg.voice = voices[i]
                   window.speechSynthesis.speak(msg);
                 }
 
@@ -144,6 +156,7 @@ var chatWindow = new Bubbles(
                 answers.push(response[i]["text"]);
                 //SpeechSynthesis
                 var msg = new SpeechSynthesisUtterance(response[i]["text"]);
+                msg.voice = voices[i]
                 window.speechSynthesis.speak(msg);
               }
 
