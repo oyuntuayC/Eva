@@ -12,6 +12,7 @@
 }
 .bubble.reply .bubble-content .bubble-button{
 	color:black !important;
+	background: rgb(44 44 44 / 10%);
 }
 .bubble.reply{
 	background: transparent !important;
@@ -21,12 +22,14 @@
 }
 .bubble-wrap{
 	padding-right: 10px;
+	right: 0;
 }
 .input-wrap {
     padding: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
+	background: linear-gradient(rgb(245 245 245 / 0%), 30%, rgba(220 221 224 ));
 }
 .speech-button {
     width: 26px;
@@ -40,10 +43,14 @@
 }
 #chat > div.input-wrap > div.speech-switch > textarea{
 	resize:none;
+	border-radius: 50px;
+    height: 31px;
+    line-height: 31px;
 }
 .speech-switch{
 	width: 100%;
 	position: relative;
+	display: flex;
 }
 .loading{
 	position: absolute;
@@ -51,4 +58,7 @@
 	text-align: center;
 	padding: 22px 0 !important;
 	border-radius: 15px;
+}
+::-webkit-scrollbar {
+	display: none;
 }

@@ -39,6 +39,12 @@ inputWrap.insertBefore(inputSwitch,speechButton);
 inputSwitch.insertAdjacentHTML('afterbegin','<div><span></span><span></span><span></span><span></span><span></span></div>');
 var speechLoading = document.querySelector("#chat > div.input-wrap > div.speech-switch > div")
 
+speechLoading.onclick = function() {
+  recognition.stop();
+  speechLoading.classList.remove('loading');
+  textArea.value = commandTemp;
+}
+
 speechButton.onclick = function() {
   recognition.start();
   commandTemp = textArea.value;
