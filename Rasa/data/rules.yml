@@ -2,11 +2,11 @@ version: "3.1"
 
 rules:
 
-- rule: respond to chitchat
+- rule: Ask the user to rephrase whenever they send a message with low NLU confidence
   steps:
-  - intent: chitchat
-  - action: utter_chitchat
-  
+  - intent: nlu_fallback
+  - action: action_gpt3_fallback
+
 - rule: Say name anytime the user asks
   steps:
   - intent: bot_name
@@ -73,8 +73,34 @@ rules:
     - requested_slot: null
   - action: action_confirm_appointment
 
+- rule: respond to chitchat_ask_building_history
+  steps:
+  - intent: chitchat_ask_building_history
+  - action: utter_chitchat_ask_building_history
 
+- rule: respond to chitchat_ask_building_name
+  steps:
+  - intent: chitchat_ask_building_name
+  - action: utter_chitchat_ask_building_name
 
+- rule: respond to chitchat_ask_building_address
+  steps:
+  - intent: chitchat_ask_building_address
+  - action: utter_chitchat_ask_building_address
 
+- rule: respond to chitchat_ask_room
+  steps:
+  - intent: chitchat_ask_room
+  - action: utter_chitchat_ask_room
+
+- rule: respond to chitchat_ask_restroom
+  steps:
+  - intent: chitchat_ask_restroom
+  - action: utter_chitchat_ask_restroom
+
+- rule: respond to chichat_out_of_scope
+  steps:
+  - intent: chichat_out_of_scope
+  - action: action_gpt3_fallback
 
 

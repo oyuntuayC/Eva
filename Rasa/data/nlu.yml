@@ -51,6 +51,7 @@ nlu:
     - correct
     - Yes.
     - Yeah.
+    - Yes, that's correct.
 - intent: deny
   examples: |
     - no
@@ -153,17 +154,17 @@ nlu:
     - Could you make it on next Monday, at around 11:00 am.
     - Please schedule it on Wednesday afternoon, at 2:00 pm.
     - Next Monday morning at 9.
-- intent: chitchat/ask_building_history
+- intent: chitchat_ask_building_history
   examples: |
     - Can you tell me a little bit about the history of this building?
     - Could you introduce this building?
     - Do you know the history of this building?
-- intent: chitchat/ask_building_name
+- intent: chitchat_ask_building_name
   examples: |
     - What's the name of this building?
     - What is this building?
     - Could you tell me the name of this building?
-- intent: chitchat/ask_building_address
+- intent: chitchat_ask_building_address
   examples: |
     - Can you tell me the address of this building?
     - I'm not sure how to get here. Can you give me directions?
@@ -174,7 +175,7 @@ nlu:
     - Could you please tell me how to get here by metro?
     - Do you know how to get here by tram?
     - How can I get here?
-- intent: chitchat/ask_room
+- intent: chitchat_ask_room
   examples: |
     - Could you please tell me if there is a conference room?
     - Do you know if this building has any meeting rooms that can be reserved?
@@ -185,19 +186,30 @@ nlu:
     - I needs to use a classroom for a study session. Do you know if there's one available?
     - I need to book a meeting room for tomorrow. Can you let me know if there's one available?
     - I'm looking for a conference room for our meeting. Can you tell me where they're located?
-- intent: chitchat/ask_restroom
+- intent: chitchat_ask_restroom
   examples: |
-    - Where can I find the restroom in this building?
-    - could you tell me where the restroom is located in this building?
-    - I was wondering if you could point me in the direction of the nearest restroom?
+    - Where can I find the restroom?
+    - could you tell me where the restroom is located?
     - Could you tell me where I can find the restroom in this building?
     - I'm looking for the restroom. Can you tell me which floor it's on?
-    - I need to use the restroom but I'm not sure where it is. Can you give me directions?
     - could you let me know where the nearest restroom is located?
     - Do you know where is the restroom?
     - I want to use the restroom.
     - Do you know where is the toilet?
     - I need to go to the restroom.
+- intent: chichat_out_of_scope
+  examples: |
+    - Do you know where is the bus stop?
+    - Where is the Glories?
+    - Do you know where is the Metro?
+    - What is the weather tommorow?
+    - What is the time right now?
+    - Do you know if there is any meeting here?
+    - I want to have lunch around here, any recommendation?
+    - How can I open this door?
+    - Can you call the doorman?
+    - Do you know where is the Sagrada Familia?
+    - How can I get to corte ingles?
 - intent: ordinal
   examples: |
     - [1st](ordinal)
