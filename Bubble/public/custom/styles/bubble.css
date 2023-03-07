@@ -38,6 +38,17 @@
 	padding: 8px 12px;
 	margin-bottom: 0;
 }
-#chat > div.input-wrap > textarea{
+#chat > div.input-wrap > div.speech-switch > textarea{
 	resize:none;
+}
+.speech-switch{
+	width: 100%;
+	position: relative;
+}
+.loading{
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	padding: 22px 0 !important;
+	border-radius: 15px;
 }

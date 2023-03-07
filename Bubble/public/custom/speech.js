@@ -15,9 +15,13 @@ recognition.continuous = false;
 recognition.lang = 'en-US';
 recognition.interimResults = false;
 recognition.maxAlternatives = 1;
+var commandTemp = ''
 
 // Append speech button
 var inputWrap = document.querySelector("#chat > div.input-wrap");
+var inputSwitch = document.createElement("div");
+inputSwitch.setAttribute("class", "speech-switch");
+var textArea = document.querySelector("#chat > div.input-wrap > textarea");
 var speechButton = document.createElement("div");
 speechButton.setAttribute("class", "bubble speech-button");
 var svgVoice = document.createElementNS('http://www.w3.org/2000/svg',"svg");
@@ -28,9 +32,18 @@ svgPath.setAttribute("d","M767.131725 469.974861c-14.246469 0-26.502607 11.43647
 svgVoice.appendChild(svgPath);
 speechButton.appendChild(svgVoice);
 inputWrap.appendChild(speechButton);
+inputSwitch.appendChild(textArea);
+inputWrap.insertBefore(inputSwitch,speechButton);
+
+//Speech animation
+inputSwitch.insertAdjacentHTML('afterbegin','<div><span></span><span></span><span></span><span></span><span></span></div>');
+var speechLoading = document.querySelector("#chat > div.input-wrap > div.speech-switch > div")
 
 speechButton.onclick = function() {
   recognition.start();
+  commandTemp = textArea.value;
+  textArea.value = ' ';
+  speechLoading.classList.add('loading');
   console.log('Ready to receive a command.');
 }
 
@@ -43,22 +56,23 @@ recognition.onresult = function(event) {
   // These also have getters so they can be accessed like arrays.
   // The second [0] returns the SpeechRecognitionAlternative at position 0.
   // We then return the transcript property of the SpeechRecognitionAlternative object
-  var color = event.results[0][0].transcript;
-  console.log('Result received: ' + color + '.');
+  var command = event.results[0][0].transcript;
+  console.log('Result received: ' + command + '.');
   // bg.style.backgroundColor = color;
   //console.log('Confidence: ' + event.results[0][0].confidence);
-  var inputText = document.querySelector("#chat > div.input-wrap > textarea")
-  inputText.value = color
+  textArea.value = command;
   const keyboardEvent = new KeyboardEvent('keypress', {
     keyCode: 13,
     view: window,
     bubbles: true
   });
-  inputText.dispatchEvent(keyboardEvent);
+  textArea.dispatchEvent(keyboardEvent);
+  textArea.value = commandTemp;
 }
 
 recognition.onspeechend = function() {
   recognition.stop();
+  speechLoading.classList.remove('loading');
 }
 
 recognition.onnomatch = function(event) {
@@ -67,4 +81,5 @@ recognition.onnomatch = function(event) {
 
 recognition.onerror = function(event) {
   console.log('Error occurred in recognition: ' + event.error);
+  speechLoading.classList.remove('loading');
 }
