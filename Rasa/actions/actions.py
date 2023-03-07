@@ -250,7 +250,7 @@ class ValidateAllSlots(ValidationAction):
         name_professor_list = findProfessorName(name_professor)
         if name_professor_list:
             if len(name_professor_list) > 1:
-                return {"name_professor_list": name_professor_list}
+                return {"name_professor_list": name_professor_list, "ordinal": None}
             elif len(name_professor_list) == 1:
                 return {"name_professor_list": name_professor_list, "ordinal": 1, "requested_slot": None}
         else:
