@@ -62,3 +62,14 @@
 ::-webkit-scrollbar {
 	display: none;
 }
+iframe{
+	width: calc(100% + 32px);
+    margin: -8px -16px;
+    overflow: hidden;
+    display: block;
+    border-radius: 15px 15px 15px 15px;
+	border: 0;
+}
+img{
+	border-radius: 15px 15px 15px 15px !important;
+}

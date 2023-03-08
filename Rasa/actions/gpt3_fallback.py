@@ -32,7 +32,7 @@ class ActionGPT3Fallback(Action):
         #return [SlotSet("request", request), SlotSet("response", response)]
         return []
 
-# entity example prompt:
+# name entity prompt:
 # Extract name entity from text with two possible role: 'user' and 'professor'. 
 
 # Example: Do you know where is Marti?
@@ -43,3 +43,38 @@ class ActionGPT3Fallback(Action):
 
 # I'm Jack and I am looking for Nuria.
 # Output: [{name: Jack; role: user}, {name: Nuria; role: professor}]
+
+# group entity prompt:
+# Extract 'group' entity from text with several possible name: 
+# MTG: Music Technology Group
+# Natural Language Processing
+# NETS Network Technologies and Strategies Group
+# NTSA: Nonlinear Time Series Analysis Group
+# Physense: Sensing in Physiology and Biomedicine Group
+# SIMBIOsys: Simulation, Imaging and Modelling for Biomedical Systems
+# TALN; Natural Language Processing
+# TIDE: Interactive & Distributed Technologies for Education
+# UBICALAB: Ubiquitous Computing Applications Lab
+# WN: Wireless Networking Group
+# WSSC: Web Science and Social Computing
+
+# Example: Do you know who is in Music Group?
+# Output: [{group: MTG; fgroup: Music Technology Group}]
+
+# Example: What's the full name of tide?
+# Output:  [{group: TIDE; fgroup: Interactive & Distributed Technologies for Education}]
+
+# Do you know where is the Natural Language group?
+# Output: [{group: NLP; fgroup: Natural Language Processing}]
+
+# direction request
+# Extract location entity from text with two possible role: 'destination' and 'departure'. 
+
+# Example: Do you know where is the Glories?
+# Output: [{name: Glories; role: destination}]
+
+# Example: Do you know how to get to the Sagrada Familia from Glories?
+# Output: [{name: Glories; role: departure},{name: Sagrada Familia; role: destination}]
+
+# Example: Do you know how to get to the Plaza Catalunya?
+# Output:  [{name: Plaza Catalunya; role: destination}]

@@ -89,6 +89,14 @@ var chatWindow = new Bubbles(
                     });
                   }
                 }
+
+                if (response[i]["custom"]) {
+                  for (j = 0; j < response[i]["custom"].length; j++) {
+                    re.push(
+                      response[i]["custom"][j]
+                    );
+                  }
+                }
               } else {
                 console.log("Wrong client id");
               }
@@ -169,6 +177,15 @@ var chatWindow = new Bubbles(
                   });
                 }
               }
+              
+              if (response[i]["custom"]) {
+                for (j = 0; j < response[i]["custom"].length; j++) {
+                  re.push(
+                    response[i]["custom"][j]
+                  );
+                }
+              }
+
             } else {
               console.log("Wrong client id");
             }

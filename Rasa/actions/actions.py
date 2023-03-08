@@ -36,6 +36,8 @@ import sqlite3
 
 from .gpt3_fallback import ActionGPT3Fallback
 
+google_map_api= 'AIzaSyA97PDznCAArEszQ0jhVQaUj_lqZ-GIjpA'
+mapIframe='<iframe width="400" height="300" style="border:0;" loading="lazy" allowfullscreen="" src="https://www.google.com/maps/embed/v1/directions?origin=place_id:ChIJ4SCMo1eipBIRDBW8jApt9V8&amp;destination=place_id:ChIJLSzAdySjpBIRUi9-eZ9fPnQ&amp;key=AIzaSyDD3X9nf5-eJGND24uVLuO6EOXRO6pjl58"></iframe>'
 class ActionConfirmAppointment(Action):
     def name(self) -> Text:
         return "action_confirm_appointment"
@@ -100,7 +102,8 @@ class ActionFetchProfessorRoom(Action):
         
         office_room = findProfessorOffice(name_professor)
         if office_room:
-            dispatcher.utter_message(f"The office room of {name_professor} is {office_room}")
+            #dispatcher.utter_message(f"The office room of {name_professor} is {office_room}")
+            dispatcher.utter_message(text=f"The office room of {name_professor} is {office_room}",custom=['<iframe width="400" height="300" style="border:0;" loading="lazy" allowfullscreen="" src="https://www.google.com/maps/embed/v1/directions?origin=place_id:ChIJ4SCMo1eipBIRDBW8jApt9V8&amp;destination=place_id:ChIJLSzAdySjpBIRUi9-eZ9fPnQ&amp;key=AIzaSyDD3X9nf5-eJGND24uVLuO6EOXRO6pjl58"></iframe>'])
             # return [SlotSet("office_room", office_room)]
             return []
         else:

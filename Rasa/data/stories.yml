@@ -9,32 +9,12 @@ stories:
   - active_loop: office_form
   - checkpoint: check_office_form_name_professor
 
-- story: office form interrupt by appointment
-  steps:
-  - checkpoint: check_office_form_name_professor
-  - slot_was_set:
-    - requested_slot: name_professor
-  - intent: make_appointment
-  - action: appointment_form
-  - active_loop: appointment_form
-  - checkpoint: check_appointment_form_name_professor
-
 - story: activate appointment form
   steps:
   - intent: make_appointment
   - action: appointment_form
   - active_loop: appointment_form
   - checkpoint: check_appointment_form_name_professor
-
-- story: appointment form interrupt by office
-  steps:
-  - checkpoint: check_appointment_form_name_professor
-  - slot_was_set:
-    - requested_slot: name_professor
-  - intent: find_name
-  - action: office_form
-  - active_loop: office_form
-  - checkpoint: check_office_form_name_professor
 
 - story: submit office form
   steps:
