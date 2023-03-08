@@ -36,8 +36,6 @@ import sqlite3
 
 from .gpt3_fallback import ActionGPT3Fallback
 
-google_map_api= 'AIzaSyA97PDznCAArEszQ0jhVQaUj_lqZ-GIjpA'
-mapIframe='<iframe width="400" height="300" style="border:0;" loading="lazy" allowfullscreen="" src="https://www.google.com/maps/embed/v1/directions?origin=place_id:ChIJ4SCMo1eipBIRDBW8jApt9V8&amp;destination=place_id:ChIJLSzAdySjpBIRUi9-eZ9fPnQ&amp;key=AIzaSyDD3X9nf5-eJGND24uVLuO6EOXRO6pjl58"></iframe>'
 class ActionConfirmAppointment(Action):
     def name(self) -> Text:
         return "action_confirm_appointment"
@@ -103,7 +101,7 @@ class ActionFetchProfessorRoom(Action):
         office_room = findProfessorOffice(name_professor)
         if office_room:
             #dispatcher.utter_message(f"The office room of {name_professor} is {office_room}")
-            dispatcher.utter_message(text=f"The office room of {name_professor} is {office_room}",custom=['<iframe width="400" height="300" style="border:0;" loading="lazy" allowfullscreen="" src="https://www.google.com/maps/embed/v1/directions?origin=place_id:ChIJ4SCMo1eipBIRDBW8jApt9V8&amp;destination=place_id:ChIJLSzAdySjpBIRUi9-eZ9fPnQ&amp;key=AIzaSyDD3X9nf5-eJGND24uVLuO6EOXRO6pjl58"></iframe>'])
+            dispatcher.utter_message(text=f"The office room of {name_professor} is {office_room}")
             # return [SlotSet("office_room", office_room)]
             return []
         else:
@@ -158,58 +156,6 @@ class ActionStart(Action):
         events.append(ActionExecuted("action_listen"))
 
         return events
-
-# def findProfessorName(name_professor:str):
-#     if(len(name_professor)>=3):
-#         data = pd.read_csv("actions/stuff.csv")
-#         fristName_f = pd.read_csv('actions/firstName_split_f.csv')
-#         fristName_s = pd.read_csv('actions/firstName_split_s.csv')
-#         lastName_f  = pd.read_csv('actions/lastName_split_f.csv')
-#         lastName_s = pd.read_csv('actions/lastName_split_s.csv')
-#         firstNameList_f = {}
-#         firstNameList_s = {}
-#         lastNameList_f = {}
-#         lastNameList_s = {}
-#         fullGroupName = {}
-
-#         for index, row in fristName_f.iterrows():
-#             irr = fuzz.ratio(name_professor.upper() , str(row['f']))
-#             if (irr >= 60):
-#                 firstNameList_f[index]=[irr]
-#         for index, row in fristName_s.iterrows():
-#             irr = fuzz.ratio(name_professor.upper() , str(row['s']))
-#             if (irr >= 60):
-#                 firstNameList_s[index]=[irr]
-
-#         for index, row in lastName_f.iterrows():
-#             irr = fuzz.ratio(name_professor.upper() , str(row[0]))
-#             if (irr>=60):
-#                 lastNameList_f[index] = [irr]
-#         for index, row in lastName_s.iterrows():
-#             irr = fuzz.ratio(name_professor.upper() , str(row[0]))
-#             if (irr>=60):
-#                 lastNameList_s[index] = [irr]
-
-#         fullGroupName.update(firstNameList_f)
-#         fullGroupName.update(firstNameList_s)
-#         fullGroupName.update(lastNameList_f)
-#         fullGroupName.update(lastNameList_s)
-#         maxIrr = max(fullGroupName.values())
-#         listAim =[maxIrr[0]*0.9]
-#         fullGroupName2={k:v for k,v in fullGroupName.items()  if v>=listAim}
-
-#         fullGroupNameSorted = sorted(fullGroupName2.items(),key = lambda x:x[1],reverse = True)
-#         df_finalNameIndex = pd.DataFrame.from_dict(fullGroupNameSorted)
-#         df_finalNameIndex.set_index([0], inplace=True)
-#         finalNameList = []
-#         for i in df_finalNameIndex.index:
-#             finalNameList.append(data.loc[i,'NOMBRE'])
-
-#         #giveyourNameList = list(set(finalNameList))
-#         if(finalNameList):
-#             return finalNameList
-#     else:
-#         return None
 
 def findProfessorName(name_professor:str):
     if(len(name_professor)>=3):
@@ -326,3 +272,79 @@ class ActionConfirmNameOffice(Action):
             return [SlotSet("name_professor", name_professor_list[order-1])]
         else:
             return []
+
+class ActionMap(Action):
+    def name(self) -> Text:
+        return "action_map"
+
+    async def run(
+      self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+        origin = tracker.get_slot("origin")
+        destination = tracker.get_slot("destination")
+        if not origin:
+            origin = "UPF Poblenou"
+            dispatcher.utter_message(custom=[map(origin,destination)])
+            return [SlotSet("origin", None),SlotSet("destination", None)]
+        elif not destination:
+            return [SlotSet("origin", None),SlotSet("destination", None)]
+        else:
+            dispatcher.utter_message(custom=[map(origin,destination)])
+            return [SlotSet("origin", None),SlotSet("destination", None)]
+    
+def map(origin,destination):
+    google_map_key= 'AIzaSyDD3X9nf5-eJGND24uVLuO6EOXRO6pjl58'
+    mapIframe=f'<iframe width="400" height="300" style="border:0;" loading="lazy" allowfullscreen="" src="https://www.google.com/maps/embed/v1/directions?origin={origin}&amp;destination={destination}&amp;key={google_map_key}"></iframe>'
+    return mapIframe
+
+# def findProfessorName(name_professor:str):
+#     if(len(name_professor)>=3):
+#         data = pd.read_csv("actions/stuff.csv")
+#         fristName_f = pd.read_csv('actions/firstName_split_f.csv')
+#         fristName_s = pd.read_csv('actions/firstName_split_s.csv')
+#         lastName_f  = pd.read_csv('actions/lastName_split_f.csv')
+#         lastName_s = pd.read_csv('actions/lastName_split_s.csv')
+#         firstNameList_f = {}
+#         firstNameList_s = {}
+#         lastNameList_f = {}
+#         lastNameList_s = {}
+#         fullGroupName = {}
+
+#         for index, row in fristName_f.iterrows():
+#             irr = fuzz.ratio(name_professor.upper() , str(row['f']))
+#             if (irr >= 60):
+#                 firstNameList_f[index]=[irr]
+#         for index, row in fristName_s.iterrows():
+#             irr = fuzz.ratio(name_professor.upper() , str(row['s']))
+#             if (irr >= 60):
+#                 firstNameList_s[index]=[irr]
+
+#         for index, row in lastName_f.iterrows():
+#             irr = fuzz.ratio(name_professor.upper() , str(row[0]))
+#             if (irr>=60):
+#                 lastNameList_f[index] = [irr]
+#         for index, row in lastName_s.iterrows():
+#             irr = fuzz.ratio(name_professor.upper() , str(row[0]))
+#             if (irr>=60):
+#                 lastNameList_s[index] = [irr]
+
+#         fullGroupName.update(firstNameList_f)
+#         fullGroupName.update(firstNameList_s)
+#         fullGroupName.update(lastNameList_f)
+#         fullGroupName.update(lastNameList_s)
+#         maxIrr = max(fullGroupName.values())
+#         listAim =[maxIrr[0]*0.9]
+#         fullGroupName2={k:v for k,v in fullGroupName.items()  if v>=listAim}
+
+#         fullGroupNameSorted = sorted(fullGroupName2.items(),key = lambda x:x[1],reverse = True)
+#         df_finalNameIndex = pd.DataFrame.from_dict(fullGroupNameSorted)
+#         df_finalNameIndex.set_index([0], inplace=True)
+#         finalNameList = []
+#         for i in df_finalNameIndex.index:
+#             finalNameList.append(data.loc[i,'NOMBRE'])
+
+#         #giveyourNameList = list(set(finalNameList))
+#         if(finalNameList):
+#             return finalNameList
+#     else:
+#         return None

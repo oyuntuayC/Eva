@@ -38,6 +38,11 @@ rules:
   - intent: greet
   - action: utter_greet
 
+- rule: Answer direction
+  steps:
+  - intent: ask_direction
+  - action: action_map
+  
 - rule: activate office form
   steps:
   - intent: find_name

@@ -199,17 +199,12 @@ nlu:
     - I need to go to the restroom.
 - intent: chichat_out_of_scope
   examples: |
-    - Do you know where is the bus stop?
-    - Where is the Glories?
-    - Do you know where is the Metro?
     - What is the weather tommorow?
     - What is the time right now?
     - Do you know if there is any meeting here?
     - I want to have lunch around here, any recommendation?
     - How can I open this door?
     - Can you call the doorman?
-    - Do you know where is the Sagrada Familia?
-    - How can I get to corte ingles?
 - intent: ordinal
   examples: |
     - [1st](ordinal)
@@ -253,3 +248,22 @@ nlu:
     - Are you a chatbot?
     - Are you a machine learning model?
     - Are you a natural language processing system?
+- intent: ask_direction
+  examples: |
+    - Do you know how to get to the [Glories]{"entity":"place","role":"destination"}?
+    - Where is the [Sagrada Familia]{"entity":"place","role":"destination"}?
+    - How can I go to [Plaza Catalunya]{"entity":"place","role":"destination"}?
+    - How to go to [Encants]{"entity":"place","role":"destination"} from [Tetutan]{"entity":"place","role":"origin"}?
+    - How to get to [Plaza de Espanya]{"entity":"place","role":"destination"} from [Plaza Catalunya]{"entity":"place","role":"origin"}?
+    - Do you know how to go to the [Zara]{"entity":"place","role":"destination"}?
+    - Do you know how can I get to [mercadona]{"entity":"place","role":"destination"}?
+    - Could you tell me how to get to the [museum]{"entity":"place","role":"destination"}?
+    - I'm looking for the nearest [grocery store]{"entity":"place","role":"destination"}, do you know where it is?
+    - Can you tell me the best way to get to the [airport]{"entity":"place","role":"destination"}?
+    - How far is the [beach]{"entity":"place","role":"destination"} from here, and how can I get there?
+    - Could you please direct me to the [train station]{"entity":"place","role":"destination"} from here?
+    - I'm staying at the [Hilton Hotel]{"entity":"place","role":"origin"}. Could you tell me how to get to the [Grand Beach Resort]{"entity":"place","role":"destination"}?
+    - Do you know where is the [bus stop]{"entity":"place","role":"destination"}?
+    - Where is the [Glories]{"entity":"place","role":"destination"}?
+    - Do you know where is the [Metro]{"entity":"place","role":"destination"}?
+    - How can I get to [corte ingles]{"entity":"place","role":"destination"}?

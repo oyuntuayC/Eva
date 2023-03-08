@@ -18,6 +18,7 @@ intents:
 - how_are_you
 - bot_name
 - bot_challenge
+- ask_direction
 - chitchat_ask_building_history
 - chitchat_ask_building_name
 - chitchat_ask_building_address  
@@ -98,6 +99,7 @@ entities:
 - PERSON
 - time
 - ordinal
+- place
 slots:
   name_professor:
     type: text
@@ -144,6 +146,18 @@ slots:
     type: list
     mappings:
     - type: custom
+  origin:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: place
+      role: origin
+  destination:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: place
+      role: destination
 session_config:
   session_expiration_time: 30
   carry_over_slots_to_new_session: false
@@ -180,6 +194,7 @@ actions:
 - action_confirm_name_office
 - action_ask_appointment_form_ordinal
 - action_ask_office_form_ordinal
+- action_map
 - action_gpt3_fallback
 
 - action_validate_slot_mappings

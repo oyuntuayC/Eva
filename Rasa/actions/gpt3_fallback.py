@@ -7,7 +7,7 @@ from rasa_sdk.events import SlotSet
 #load_dotenv()
 #openai.api_key = os.getenv("OPENAI_API_KEY")
 #openai.api_key = "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"
-openai.api_key = "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"
+openai.api_key = "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"
 
 class ActionGPT3Fallback(Action):
     def name(self) -> str:

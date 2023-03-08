@@ -72,14 +72,19 @@ var chatWindow = new Bubbles(
                   answers.push(
                     "<img src='" + response[i]["image"] + "'>"
                   );
-                } else {
+                } else if (response[i]["text"]) {
                   answers.push(response[i]["text"]);
                   //SpeechSynthesis
                   var msg = new SpeechSynthesisUtterance(response[i]["text"]);
                   msg.voice = voices[i]
                   window.speechSynthesis.speak(msg);
+                }else if (response[i]["custom"]) {
+                  for (j = 0; j < response[i]["custom"].length; j++) {
+                    answers.push(
+                      response[i]["custom"][j]
+                    );
+                  }
                 }
-
                 // Checks if there are buttons for the RASA response
                 if (response[i]["buttons"]) {
                   for (j = 0; j < response[i]["buttons"].length; j++) {
@@ -90,13 +95,6 @@ var chatWindow = new Bubbles(
                   }
                 }
 
-                if (response[i]["custom"]) {
-                  for (j = 0; j < response[i]["custom"].length; j++) {
-                    re.push(
-                      response[i]["custom"][j]
-                    );
-                  }
-                }
               } else {
                 console.log("Wrong client id");
               }
@@ -155,19 +153,28 @@ var chatWindow = new Bubbles(
 
           var answers = [];
           var re = [];
+
           for (i = 0; i < response.length; i++) {
             if (response[i]["recipient_id"] == client_id) {
               //We check if the reponse by RASA contains any images
               if (response[i]["image"]) {
-                answers.push("<img src='" + response[i]["image"] + "'>");
-              } else {
+                answers.push(
+                  "<img src='" + response[i]["image"] + "'>"
+                );
+              } else if(response[i]["text"]){
                 answers.push(response[i]["text"]);
                 //SpeechSynthesis
                 var msg = new SpeechSynthesisUtterance(response[i]["text"]);
                 msg.voice = voices[i]
                 window.speechSynthesis.speak(msg);
+              }else if (response[i]["custom"]) {
+                for (j = 0; j < response[i]["custom"].length; j++) {
+                  answers.push(
+                    response[i]["custom"][j]
+                  );
+                }
               }
-
+              console.log(answers);
               // Checks if there are buttons for the RASA response
               if (response[i]["buttons"]) {
                 for (j = 0; j < response[i]["buttons"].length; j++) {
@@ -175,14 +182,6 @@ var chatWindow = new Bubbles(
                     question: response[i]["buttons"][j]["title"],
                     answer: response[i]["buttons"][j]["payload"],
                   });
-                }
-              }
-              
-              if (response[i]["custom"]) {
-                for (j = 0; j < response[i]["custom"].length; j++) {
-                  re.push(
-                    response[i]["custom"][j]
-                  );
                 }
               }
 
