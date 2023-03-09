@@ -283,7 +283,7 @@ class ActionMap(Action):
         origin = tracker.get_slot("origin")
         destination = tracker.get_slot("destination")
         if not origin:
-            origin = "UPF Poblenou"
+            origin = "place_id:ChIJj7h5wzyjpBIROJNdwFWz97k" # Tanger building
             dispatcher.utter_message(custom=[map(origin,destination)])
             return [SlotSet("origin", None),SlotSet("destination", None)]
         elif not destination:
@@ -294,7 +294,7 @@ class ActionMap(Action):
     
 def map(origin,destination):
     google_map_key= 'AIzaSyDD3X9nf5-eJGND24uVLuO6EOXRO6pjl58'
-    mapIframe=f'<iframe height="300" style="border:0;width: calc(100% + 80px);" loading="lazy" allowfullscreen="" src="https://www.google.com/maps/embed/v1/directions?origin={origin}&amp;destination={destination}&amp;key={google_map_key}"></iframe>'
+    mapIframe=f'<iframe height="300" style="border:0;width: calc(100% + 80px);" loading="lazy" allowfullscreen="" src="https://www.google.com/maps/embed/v1/directions?mode=transit&amp;origin={origin}&amp;destination={destination}&amp;key={google_map_key}"></iframe>'
     return mapIframe
 
 # def findProfessorName(name_professor:str):

@@ -37,10 +37,10 @@
     height: 35px;
     cursor: pointer;
     border-radius: 50% !important;
-    margin-left: 5px;
     flex-shrink: 0;
 	padding: 8px 12px;
-	margin-bottom: 0;
+	margin-bottom: 0px !important;
+    margin-left: 5px !important;
 }
 #chat > div.input-wrap > div.speech-switch > textarea{
 	resize:none;
