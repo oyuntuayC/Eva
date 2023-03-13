@@ -30,7 +30,7 @@ intents:
 - ask_phone
 - ask_theses
 - ask_events
-- ask_elevators
+- ask_elevator
 responses:
   utter_greet_else:
   - text: What else could I do for you?
