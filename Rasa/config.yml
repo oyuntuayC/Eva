@@ -30,6 +30,7 @@ pipeline:
 #    max_ngram: 4
   - name: DIETClassifier
     epochs: 150
+    number_of_transformer_layers: 4
     constrain_similarities: true
   - name: SpacyEntityExtractor
     dimensions: ["PERSON"]
@@ -68,11 +69,11 @@ policies:
     enable_fallback_prediction: True
   - name: TEDPolicy
     max_history: 5
-    epochs: 150
-    # number_of_transformer_layers: 
-    #   text: 3
-    #   action_text: 3
-    #   label_action_text: 3
-    #   dialogue: 3
+    epochs: 180
+    number_of_transformer_layers: 
+      text: 3
+      action_text: 3
+      label_action_text: 3
+      dialogue: 3
     constrain_similarities: true
     # model_confidence: softmax

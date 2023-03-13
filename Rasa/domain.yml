@@ -25,6 +25,12 @@ intents:
 - chitchat_ask_room
 - chitchat_ask_restroom
 - chichat_out_of_scope
+- ask_PIE
+- ask_admin_schedule
+- ask_phone
+- ask_theses
+- ask_events
+- ask_elevators
 responses:
   utter_greet_else:
   - text: What else could I do for you?
@@ -95,6 +101,18 @@ responses:
   - text: My name is Eva, I'm a voice assistant of Tanger building.
   utter_feel_great:
   - text: Great! how can I help you?
+  utter_response_theses:
+  - text: Theses are read on
+  utter_admin_schedule:
+  - text: Administration offices are open from 10 A.M. to 1 P.M. every working day, and from 4 P.M. to 5 P.M. every working day except Fridays.
+  utter_response_events:
+  - text: The events being held today are
+  utter_response_elevator:
+  - text: To use the elevators with a card reader, as well as to acces the floors marked in read, a professor or researcher card will be needed. Other elevators have no requirements. If an elevator is not working, please notify administration so it can be fixed.
+  utter_response_PIE:
+  - text: The Student Information Point is open every working day from 11 A.M. to 2 P.M., and from 3 P.M. to 6 P.M.
+  utter_response_phone:
+  - text: The phone number for this building's administration is 93, 5, 4, 2, 20, 0, 0.
 entities:
 - PERSON
 - time
@@ -177,6 +195,12 @@ actions:
 - utter_appointment_confirmed
 - utter_bot_name
 - utter_feel_great
+- utter_response_phone
+- utter_response_PIE
+- utter_admin_schedule
+- utter_response_theses
+- utter_response_elevator
+- utter_response_events
 
 - utter_chitchat_ask_building_history
 - utter_chitchat_ask_building_name

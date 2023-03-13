@@ -108,4 +108,32 @@ rules:
   - intent: chichat_out_of_scope
   - action: action_gpt3_fallback
 
+- rule: respond to theses
+  steps:
+  - intent: ask_theses
+  - action: utter_response_theses
 
+- rule: respond to PIE schedule
+  steps:
+  - intent: ask_PIE
+  - action: utter_response_PIE
+  
+- rule: respond to administration schedule
+  steps:
+  - intent: ask_admin_schedule
+  - action: utter_admin_schedule
+
+- rule: respond to events
+  steps:
+  - intent: ask_events
+  - action: utter_response_events
+  
+- rule: respond to elevator
+  steps:
+  - intent: ask_elevator
+  - action: utter_response_elevator
+
+- rule: respond to phone
+  steps:
+  - intent: ask_phone
+  - action: utter_response_phone

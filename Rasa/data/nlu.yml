@@ -267,3 +267,46 @@ nlu:
     - Where is the [Glories]{"entity":"place","role":"destination"}?
     - Do you know where is the [Metro]{"entity":"place","role":"destination"}?
     - How can I get to [corte ingles]{"entity":"place","role":"destination"}?
+- intent: ask_theses
+  examples: |
+    - What theses are being read today?
+    - What PhD theses are being held today?
+    - What PhD theses are being read today?
+    - What PhD theses are being presented today?
+    - What doctoral theses are being read today?
+    - What doctoral theses are being held today?
+    - What doctoral theses are being presented today?
+    - What is the schedule for PhD theses today?
+- intent: ask_PIE
+  examples: |
+    - What is the schedule for the Student Information Point?
+    - When is the Student Information Point open?
+    - When can I go to the Student Information Point?
+    - Is the Student Information Point open right now?
+    - What is the schedule for the P I E?
+    - When is the P I E open?
+    - When can I go to the P I E?
+    - Is the P I E open right now?
+- intent: ask_admin_schedule
+  examples: |
+    - When are the administration offices open?
+    - When does the administration open?
+    - What is the schedule for the administration offices?
+    - What is the schedule for the administration?
+- intent: ask_events
+  examples: |
+    - What events are being held by U P F this week?
+    - What is the U P F event schedule this week?
+- intent: ask_elevator
+  examples: |
+    - How can I use the elevator?
+    - I can't use the elevator
+    - The elevator doesn't come when I call it
+    - Do I need something to call the elevator?
+    - What do I need top use the elevator?
+- intent: ask_phone
+  examples: |
+    - What is the phone number for this administration?
+    - What is the phone number for the secretary?
+    - How can I call administration?
+    - What is the phone number for this building?
