@@ -46,11 +46,11 @@ var chatWindow = new Bubbles(
         var url = base_url + "/webhooks/rest/webhook";
 
         //translate
-        var input = ""
+        var resultTranslated = "";
         translate(chatObject.input, 'es')
         .then(result => {
-          input = result;
-          console.log(input);
+          resultTranslated = result;
+          console.log(resultTranslated);
         })
         .catch(error => {
           console.error(error);
@@ -60,7 +60,7 @@ var chatWindow = new Bubbles(
         if (text_inp) {
           input = text_inp;
         } else {
-          input = result;
+          input = resultTranslated;
         }
 
         // RASA's POST format

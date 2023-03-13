@@ -308,10 +308,12 @@ class ActionEvents(Action):
             html = response.read()
             soup = BeautifulSoup(html, 'html.parser')
             divs = soup.select(selector)
+            divs[0].find('a', {"class": "o_card__button"}).decompose()
             dispatcher.utter_message(custom=[str(divs[0]).replace('src="/','src="https://eventum.upf.edu/')])
             # for div in divs:
             #     sub_div = div.select_one('div > div')
             #     print(sub_div)
+        return []
 
 def map(origin,destination):
     google_map_key= 'AIzaSyDD3X9nf5-eJGND24uVLuO6EOXRO6pjl58'

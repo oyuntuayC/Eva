@@ -73,3 +73,43 @@ iframe{
 img{
 	border-radius: 15px 15px 15px 15px !important;
 }
+.o_event_container{
+    margin: -8px -16px;
+    overflow: hidden;
+    border-radius: 15px 15px 15px 15px;
+    border: 0;
+}
+.o_card__footer p.other_data--place {
+    font-weight: bold;
+    margin-bottom: 3px;
+    height: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.o_card__footer p.other_data {
+    color: #8492a5;
+    font-size: 12px;
+    line-height: 1.33;
+}
+.o_card__footer p.main {
+    font-size: 14px;
+    display: block;
+    height: 72px;
+    overflow: hidden;
+    line-height: 24px;
+    margin-bottom: 12px;
+    margin-block-start: 0;
+}
+.o_card__footer {
+    padding: 10px 16px 10px 16px;
+    color: #050607;
+    border: solid 1px #c8cfd6;
+    border-top: 1px solid transparent;
+    border-radius: 0 0 3px 3px;
+	background: white;
+}
+.o_card__footer p.main a, .o_card__footer p.main a:hover {
+    color: #050607 !important;
+    text-decoration: none;
+}
