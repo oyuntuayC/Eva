@@ -307,7 +307,7 @@ class ActionEvents(Action):
         with urllib.request.urlopen(url) as response:
             html = response.read()
             soup = BeautifulSoup(html, 'html.parser')
-            divs = soup.select(selector)[0]
+            divs = soup.select(selector)
             dispatcher.utter_message(custom=[str(divs[0]).replace('src="/','src="https://eventum.upf.edu/')])
             # for div in divs:
             #     sub_div = div.select_one('div > div')

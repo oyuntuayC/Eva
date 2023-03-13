@@ -45,11 +45,22 @@ var chatWindow = new Bubbles(
         var xhr = new XMLHttpRequest();
         var url = base_url + "/webhooks/rest/webhook";
 
+        //translate
+        var input = ""
+        translate(chatObject.input, 'es')
+        .then(result => {
+          input = result;
+          console.log(input);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+      
         var input = false;
         if (text_inp) {
           input = text_inp;
         } else {
-          input = chatObject.input;
+          input = result;
         }
 
         // RASA's POST format
