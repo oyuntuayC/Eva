@@ -283,10 +283,10 @@ nlu:
     - When is the Student Information Point open?
     - When can I go to the Student Information Point?
     - Is the Student Information Point open right now?
-    - What is the schedule for the P I E?
-    - When is the P I E open?
-    - When can I go to the P I E?
-    - Is the P I E open right now?
+    - What is the schedule for the PIE?
+    - When is the PIE open?
+    - When can I go to the PIE?
+    - Is the PIE open right now?
 - intent: ask_admin_schedule
   examples: |
     - When are the administration offices open?
@@ -295,8 +295,12 @@ nlu:
     - What is the schedule for the administration?
 - intent: ask_events
   examples: |
-    - What events are being held by U P F this week?
-    - What is the U P F event schedule this week?
+    - What events are being held by UPF this week?
+    - What is the UPF event schedule this week?
+    - What are the upcoming events this month?
+    - What is the event schedule for the week?
+    - What are the top events happening in the campus?
+    - What are the events being held at the campus these days?
 - intent: ask_elevator
   examples: |
     - How can I use the elevator?
