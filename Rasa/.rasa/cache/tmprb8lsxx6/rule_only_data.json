@@ -1,0 +1,9 @@
+{
+  "rule_only_slots": [
+    "requested_slot"
+  ],
+  "rule_only_loops": [
+    "appointment_form",
+    "office_form"
+  ]
+}

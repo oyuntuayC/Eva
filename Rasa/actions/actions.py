@@ -30,6 +30,8 @@ from rasa_sdk.events import SlotSet, SessionStarted, ActionExecuted, EventType
 from rasa_sdk import Action, Tracker, ValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from thefuzz import fuzz, process
+import urllib.request
+from bs4 import BeautifulSoup
 import pandas as pd
 import os
 import sqlite3
@@ -291,7 +293,26 @@ class ActionMap(Action):
         else:
             dispatcher.utter_message(custom=[map(origin,destination)])
             return [SlotSet("origin", None),SlotSet("destination", None)]
-    
+
+class ActionEvents(Action):
+    def name(self) -> Text:
+        return "action_events"
+
+    async def run(
+      self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+        url = 'https://eventum.upf.edu/'
+        selector = '#upcoming > div.row.event-card-container > div'
+
+        with urllib.request.urlopen(url) as response:
+            html = response.read()
+            soup = BeautifulSoup(html, 'html.parser')
+            divs = soup.select(selector)[0]
+            dispatcher.utter_message(custom=[str(divs[0]).replace('src="/','src="https://eventum.upf.edu/')])
+            # for div in divs:
+            #     sub_div = div.select_one('div > div')
+            #     print(sub_div)
+
 def map(origin,destination):
     google_map_key= 'AIzaSyDD3X9nf5-eJGND24uVLuO6EOXRO6pjl58'
     mapIframe=f'<iframe height="300" style="border:0;width: calc(100% + 80px);" loading="lazy" allowfullscreen="" src="https://www.google.com/maps/embed/v1/directions?mode=transit&amp;origin={origin}&amp;destination={destination}&amp;key={google_map_key}"></iframe>'

@@ -126,7 +126,7 @@ rules:
 - rule: respond to events
   steps:
   - intent: ask_events
-  - action: utter_response_events
+  - action: action_events
   
 - rule: respond to elevator
   steps:
