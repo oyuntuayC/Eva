@@ -15,7 +15,7 @@ function makeid() {
 }
 
 //modify height
-document.querySelector("#chat").style.height=window.innerHeight
+document.querySelector("#chat").style.height=window.innerHeight+'px'
 
 //the base url at which RASA is running
 var base_url = window.location.origin;
@@ -26,13 +26,14 @@ var client_id = makeid();
 //add language option listener
 var language='en'
 const mapping={en:'en-US',ca:'ca-ES',es:'es-ES',zh:'zh-CN'}
+const mapping2={en:'en_US',ca:'ca_ES',es:'es_ES',zh:'zh_CN'}
 //request list of voices
 function getVoice(){
   let voices = [];
   voices = window.speechSynthesis.getVoices();
   var voice_id = 0;
   for (let i = 0; i < voices.length; i++) {
-    if (voices[i].lang ==mapping[language]) {
+    if (voices[i].lang.includes(mapping[language]) || voices[i].lang.includes(mapping2[language])) {
       voice_id = i;
       break;
     }
