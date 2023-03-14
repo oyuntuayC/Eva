@@ -31,16 +31,15 @@ const mapping2={en:'en_US',ca:'ca_ES',es:'es_ES',zh:'zh_CN'}
 function getVoice(){
   let voices = [];
   voices = window.speechSynthesis.getVoices();
-  var voice_id = 0;
   for (let i = 0; i < voices.length; i++) {
     if (voices[i].lang.includes(mapping[language]) || voices[i].lang.includes(mapping2[language])) {
-      voice_id = i;
+      voice=voices[i];
       break;
     }
   }
-  return voice_id
+  return voice
 }
-var voice_id=0;
+var voice;
 
 var chatWindow = new Bubbles(
   document.getElementById("chat"),
@@ -181,7 +180,7 @@ var chatWindow = new Bubbles(
                 answers.push(result);
                 //SpeechSynthesis
                 var msg = new SpeechSynthesisUtterance(result);
-                msg.voice = voices[voice_id]
+                msg.voice = voice;
                 window.speechSynthesis.speak(msg);
               }else if (response[i]["custom"]) {
                 for (j = 0; j < response[i]["custom"].length; j++) {

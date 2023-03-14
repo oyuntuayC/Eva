@@ -29,5 +29,5 @@ languageSelector.addEventListener("change", function() {
     language = languageSelector.value;
     recognition.lang=mapping[language]
     menu.style.display = "none"
-    voice_id=getVoice();
+    voice=getVoice();
 });
