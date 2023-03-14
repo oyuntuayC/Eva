@@ -91,6 +91,8 @@ img{
     color: #8492a5;
     font-size: 12px;
     line-height: 1.33;
+	margin-block-start: 0em;
+    margin-block-end: 0px;
 }
 .o_card__footer p.main {
     font-size: 14px;
@@ -98,13 +100,12 @@ img{
     height: 72px;
     overflow: hidden;
     line-height: 24px;
-    margin-bottom: 12px;
     margin-block-start: 0;
 }
 .o_card__footer {
     padding: 10px 16px 10px 16px;
     color: #050607;
-    border: solid 1px #c8cfd6;
+    /* border: solid 1px #c8cfd6; */
     border-top: 1px solid transparent;
     border-radius: 0 0 3px 3px;
 	background: white;

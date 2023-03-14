@@ -1,13 +1,15 @@
-function translate(text, language) {
-    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&dt=t&sl=${encodeURI(language)}&tl=en&q=${encodeURI(text)}`;
-    
-    return fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        const result = data[0][0][0].replace(/^["“”「」‘’`]+|["“”「」‘’`]+$/g, '');
-        return result;
-      })
-      .catch(error => {
-        console.error(error);
-      });
+function translate(text, languageIn, languageOut) {
+  const url = `https://translate.googleapis.com/translate_a/single?client=gtx&dt=t&sl=${encodeURI(languageIn)}&tl=${encodeURI(languageOut)}&q=${encodeURI(text)}`;
+
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', url, false);
+  xhr.send();
+
+  if (xhr.status === 200) {
+    const data = JSON.parse(xhr.responseText);
+    const result = data[0][0][0].replace(/^["“”「」‘’`]+|["“”「」‘’`]+$/g, '');
+    return result;
+  } else {
+    throw new Error(`Failed to translate '${text}'. Status code: ${xhr.status}`);
   }
+}

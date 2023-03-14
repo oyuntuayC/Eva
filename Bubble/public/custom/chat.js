@@ -46,27 +46,19 @@ var chatWindow = new Bubbles(
         var url = base_url + "/webhooks/rest/webhook";
 
         //translate
-        var resultTranslated = "";
-        translate(chatObject.input, 'es')
-        .then(result => {
-          resultTranslated = result;
-          console.log(resultTranslated);
-        })
-        .catch(error => {
-          console.error(error);
-        });
+        var result = translate(chatObject.input, 'es', 'en')
       
         var input = false;
         if (text_inp) {
           input = text_inp;
         } else {
-          input = resultTranslated;
+          input = chatObject.input;
         }
 
         // RASA's POST format
         var request_body = {
           sender: client_id,
-          message: input,
+          message: result,
         };
 
         xhr.onreadystatechange = function () {
@@ -84,7 +76,8 @@ var chatWindow = new Bubbles(
                     "<img src='" + response[i]["image"] + "'>"
                   );
                 } else if (response[i]["text"]) {
-                  answers.push(response[i]["text"]);
+                  var result = translate(response[i]["text"],'en','es');
+                  answers.push(result);
                   //SpeechSynthesis
                   var msg = new SpeechSynthesisUtterance(response[i]["text"]);
                   msg.voice = voices[i]
@@ -173,7 +166,8 @@ var chatWindow = new Bubbles(
                   "<img src='" + response[i]["image"] + "'>"
                 );
               } else if(response[i]["text"]){
-                answers.push(response[i]["text"]);
+                var result = translate(response[i]["text"],'en','es');
+                answers.push(result);
                 //SpeechSynthesis
                 var msg = new SpeechSynthesisUtterance(response[i]["text"]);
                 msg.voice = voices[i]
