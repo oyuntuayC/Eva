@@ -14,25 +14,32 @@ function makeid() {
   return result;
 }
 
+//modify height
+document.querySelector("#chat").style.height=window.innerHeight
+
 //the base url at which RASA is running
 var base_url = window.location.origin;
 
 //A unique client id so that the data doesn't get mismatched
 var client_id = makeid();
 
-//request list of voices
-let voices = [];
-voices = window.speechSynthesis.getVoices();
-var voice_id = 0;
-for (let i = 0; i < voices.length; i++) {
-  if (voices[i].name === "Microsoft Aria Online (Natural) - English (United States)") {
-    voice_id = i;
-    break;
-  }
-}
-
 //add language option listener
 var language='en'
+const mapping={en:'en-US',ca:'ca-ES',es:'es-ES',zh:'zh-CN'}
+//request list of voices
+function getVoice(){
+  let voices = [];
+  voices = window.speechSynthesis.getVoices();
+  var voice_id = 0;
+  for (let i = 0; i < voices.length; i++) {
+    if (voices[i].lang ==mapping[language]) {
+      voice_id = i;
+      break;
+    }
+  }
+  return voice_id
+}
+var voice_id=0;
 
 var chatWindow = new Bubbles(
   document.getElementById("chat"),
@@ -82,8 +89,8 @@ var chatWindow = new Bubbles(
                   var result = translate(response[i]["text"],'en',language);
                   answers.push(result);
                   //SpeechSynthesis
-                  var msg = new SpeechSynthesisUtterance(response[i]["text"]);
-                  msg.voice = voices[i]
+                  var msg = new SpeechSynthesisUtterance(result);
+                  msg.voice = voices[voice_id]
                   window.speechSynthesis.speak(msg);
                 }else if (response[i]["custom"]) {
                   for (j = 0; j < response[i]["custom"].length; j++) {
@@ -172,8 +179,8 @@ var chatWindow = new Bubbles(
                 var result = translate(response[i]["text"],'en',language);
                 answers.push(result);
                 //SpeechSynthesis
-                var msg = new SpeechSynthesisUtterance(response[i]["text"]);
-                msg.voice = voices[i]
+                var msg = new SpeechSynthesisUtterance(result);
+                msg.voice = voices[voice_id]
                 window.speechSynthesis.speak(msg);
               }else if (response[i]["custom"]) {
                 for (j = 0; j < response[i]["custom"].length; j++) {

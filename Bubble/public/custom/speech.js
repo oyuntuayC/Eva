@@ -51,6 +51,7 @@ speechButton.onclick = function() {
   textArea.value = ' ';
   speechLoading.classList.add('loading');
   console.log('Ready to receive a command.');
+  voice_id=getVoice()
 }
 
 recognition.onresult = function(event) {

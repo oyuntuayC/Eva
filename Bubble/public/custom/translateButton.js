@@ -23,11 +23,11 @@ menubg.onclick = function() {
       menu.style.display = "none";
     }
 }
-const mapping={en:'en-US',ca:'ca-ES',es:'es-ES',zh:'zh-CN'}
 var languageSelector = document.getElementById("language");
 var menu=document.querySelector("#chat > div.language-selector");
 languageSelector.addEventListener("change", function() {
     language = languageSelector.value;
     recognition.lang=mapping[language]
     menu.style.display = "none"
+    voice_id=getVoice();
 });

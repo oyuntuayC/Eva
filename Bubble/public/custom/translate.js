@@ -21,7 +21,7 @@ var languageSelector='<div class="language-selector" style="display: none;">\
     <option value="en">English</option>\
     <option value="ca">Catalan</option>\
     <option value="es">Español</option>\
-    <option value="es">Chinese</option>\
+    <option value="zh">Chinese</option>\
   </select>\
   <div class="language-background" style="z-index: -999;">\
   </div>\
