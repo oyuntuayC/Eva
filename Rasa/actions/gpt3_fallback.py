@@ -12,7 +12,7 @@ class ActionGPT3Fallback(Action):
         return "action_gpt3_fallback"
     
     def run(self, dispatcher, tracker, domain):
-        dispatcher.utter_message(text="That is a bit out of scope, but here is what I know.")
+        # dispatcher.utter_message(text="That is a bit out of scope, but here is what I know.")
         request = tracker.latest_message['text']
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",

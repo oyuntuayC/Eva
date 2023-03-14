@@ -301,6 +301,7 @@ nlu:
     - What is the event schedule for the week?
     - What are the top events happening in the campus?
     - What are the events being held at the campus these days?
+    - What events is UPF organizing this week?
 - intent: ask_elevator
   examples: |
     - How can I use the elevator?

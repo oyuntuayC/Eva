@@ -1,0 +1,78 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-PERSON",
+      "2": "I-PERSON",
+      "3": "L-PERSON",
+      "4": "U-PERSON",
+      "5": "B-ordinal",
+      "6": "I-ordinal",
+      "7": "L-ordinal",
+      "8": "U-ordinal",
+      "9": "B-place",
+      "10": "I-place",
+      "11": "L-place",
+      "12": "U-place",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-PERSON": 1,
+      "I-PERSON": 2,
+      "L-PERSON": 3,
+      "U-PERSON": 4,
+      "B-ordinal": 5,
+      "I-ordinal": 6,
+      "L-ordinal": 7,
+      "U-ordinal": 8,
+      "B-place": 9,
+      "I-place": 10,
+      "L-place": 11,
+      "U-place": 12,
+      "O": 0
+    },
+    "num_tags": 13
+  },
+  {
+    "tag_name": "role",
+    "ids_to_tags": {
+      "1": "B-destination",
+      "2": "I-destination",
+      "3": "L-destination",
+      "4": "U-destination",
+      "5": "B-origin",
+      "6": "I-origin",
+      "7": "L-origin",
+      "8": "U-origin",
+      "9": "B-professor",
+      "10": "I-professor",
+      "11": "L-professor",
+      "12": "U-professor",
+      "13": "B-user",
+      "14": "I-user",
+      "15": "L-user",
+      "16": "U-user",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-destination": 1,
+      "I-destination": 2,
+      "L-destination": 3,
+      "U-destination": 4,
+      "B-origin": 5,
+      "I-origin": 6,
+      "L-origin": 7,
+      "U-origin": 8,
+      "B-professor": 9,
+      "I-professor": 10,
+      "L-professor": 11,
+      "U-professor": 12,
+      "B-user": 13,
+      "I-user": 14,
+      "L-user": 15,
+      "U-user": 16,
+      "O": 0
+    },
+    "num_tags": 17
+  }
+]
