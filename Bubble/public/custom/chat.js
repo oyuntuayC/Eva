@@ -90,7 +90,7 @@ var chatWindow = new Bubbles(
                   answers.push(result);
                   //SpeechSynthesis
                   var msg = new SpeechSynthesisUtterance(result);
-                  msg.voice = voices[voice_id]
+                  msg.voice = voice
                   window.speechSynthesis.speak(msg);
                 }else if (response[i]["custom"]) {
                   for (j = 0; j < response[i]["custom"].length; j++) {
