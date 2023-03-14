@@ -15,7 +15,9 @@ function makeid() {
 }
 
 //modify height
-document.querySelector("#chat").style.height=window.innerHeight+'px'
+window.onresize = function(){
+  document.querySelector("#chat").style.height=window.innerHeight+'px'
+}
 
 //the base url at which RASA is running
 var base_url = window.location.origin;
@@ -220,6 +222,8 @@ var chatWindow = new Bubbles(
       xhr.setRequestHeader("Content-Type", "application/json");
       xhr.send(JSON.stringify(request_body));
     },
+
+    typeSpeed:1
   }
 );
 
