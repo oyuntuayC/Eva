@@ -308,13 +308,30 @@ class ActionEvents(Action):
             html = response.read()
             soup = BeautifulSoup(html, 'html.parser')
             divs = soup.select(selector)
-            divs[0].find('a', {"class": "o_card__button"}).decompose()
-            dispatcher.utter_message(custom=[str(divs[0]).replace('src="/','src="https://eventum.upf.edu/')])
+            chunk = ''
+            for i in range(3):
+                try:
+                    divs[i].find('a', {"class": "o_card__button"}).decompose()
+                except:
+                    pass
+                chunk += str(divs[i]).replace('src="/','src="https://eventum.upf.edu/')
+            dispatcher.utter_message(custom=[chunk])
             # for div in divs:
             #     sub_div = div.select_one('div > div')
             #     print(sub_div)
         return []
+    
+class ActionReadings(Action):
+    def name(self) -> Text:
+        return "action_readings"
 
+    async def run(
+      self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+        iframe = '<iframe class= "calender" frameborder="0" width="600" height="500" scrolling="no" src="https://calendar.google.com/calendar/b/1/embed?showTitle=0&amp;mode=AGENDA&amp;height=800&amp;wkst=2&amp;bgcolor=%23FFFFFF&amp;src=upf.edu_7haufqkt5je4vjat0oos01var0%40group.calendar.google.com&amp;color=%23875509&amp;src=upf.edu_r21r1qqqhfhq9jrbo8uf927hc8%40group.calendar.google.com&amp;color=%235F6B02&amp;src=upf.edu_4r1fbqh71lg3acsvfucnl8ud6k%40group.calendar.google.com&amp;color=%23c8102e&amp;src=upf.edu_s4lv7tk0med4uc5bed7vgpdt3k%40group.calendar.google.com&amp;color=%2342104A&amp;src=upf.edu_k4aomjbdqhke8s518u027oejt0%40group.calendar.google.com&amp;color=%23333333&amp;src=upf.edu_nspmrvsm8b2p98k7qdor7o06i8%40group.calendar.google.com&amp;color=%2323164E&amp;src=upf.edu_m451scd01bnikdut0l4j2vp2m8%40group.calendar.google.com&amp;color=%232952A3&amp;src=upf.edu_mf241kap986is84pn5p68dg7uk%40group.calendar.google.com&amp;color=%23865A5A&amp;src=upf.edu_p1116ugskrd9858200184uuneg%40group.calendar.google.com&amp;color=%238C500B&amp;src=upf.edu_5veerfbk6dj26dr1fudk0ugbcg%40group.calendar.google.com&amp;color=%2328754E&amp;src=upf.edu_dfidh32drpt038m8lla9ife6g0%40group.calendar.google.com&amp;color=%2323164E&amp;ctz=Europe%2FMadrid" style="border-width:0;width: calc(100% + 70px);"  __idm_id__="44883969"></iframe>'
+        dispatcher.utter_message(custom=[iframe])
+        return []
+    
 def map(origin,destination):
     google_map_key= 'AIzaSyDD3X9nf5-eJGND24uVLuO6EOXRO6pjl58'
     mapIframe=f'<iframe height="300" style="border:0;width: calc(100% + 80px);" loading="lazy" allowfullscreen="" src="https://www.google.com/maps/embed/v1/directions?mode=transit&amp;origin={origin}&amp;destination={destination}&amp;key={google_map_key}"></iframe>'

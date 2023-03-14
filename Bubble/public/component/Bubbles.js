@@ -266,9 +266,15 @@ function Bubbles(container, self, options) {
     bubbleQueue = setTimeout(function() {
       bubble.classList.remove("imagine")
       var bubbleWidthCalc = bubbleContent.offsetWidth + widerBy + "px"
+      bubble.classList.add(say.includes("o_event_container")
+        ? "event"
+        : say.includes("calendar.google.com")
+        ? "calender"
+        : null
+      );
       bubble.style.width = reply == "" ? bubbleWidthCalc : ""
       bubble.style.width = say.includes("<img src=")
-        ? "50%"
+        ? "70%"
         : bubble.style.width
       bubble.classList.add("say")
       posted()

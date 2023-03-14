@@ -31,6 +31,9 @@ for (let i = 0; i < voices.length; i++) {
   }
 }
 
+//add language option listener
+var language='en'
+
 var chatWindow = new Bubbles(
   document.getElementById("chat"),
   "chatWindow",
@@ -46,7 +49,7 @@ var chatWindow = new Bubbles(
         var url = base_url + "/webhooks/rest/webhook";
 
         //translate
-        var result = translate(chatObject.input, 'es', 'en')
+        var result = translate(chatObject.input, language, 'en')
       
         var input = false;
         if (text_inp) {
@@ -76,7 +79,7 @@ var chatWindow = new Bubbles(
                     "<img src='" + response[i]["image"] + "'>"
                   );
                 } else if (response[i]["text"]) {
-                  var result = translate(response[i]["text"],'en','es');
+                  var result = translate(response[i]["text"],'en',language);
                   answers.push(result);
                   //SpeechSynthesis
                   var msg = new SpeechSynthesisUtterance(response[i]["text"]);
@@ -166,7 +169,7 @@ var chatWindow = new Bubbles(
                   "<img src='" + response[i]["image"] + "'>"
                 );
               } else if(response[i]["text"]){
-                var result = translate(response[i]["text"],'en','es');
+                var result = translate(response[i]["text"],'en',language);
                 answers.push(result);
                 //SpeechSynthesis
                 var msg = new SpeechSynthesisUtterance(response[i]["text"]);
@@ -179,7 +182,6 @@ var chatWindow = new Bubbles(
                   );
                 }
               }
-              console.log(answers);
               // Checks if there are buttons for the RASA response
               if (response[i]["buttons"]) {
                 for (j = 0; j < response[i]["buttons"].length; j++) {

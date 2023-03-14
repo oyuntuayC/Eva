@@ -111,7 +111,7 @@ rules:
 - rule: respond to theses
   steps:
   - intent: ask_theses
-  - action: utter_response_theses
+  - action: action_readings
 
 - rule: respond to PIE schedule
   steps:

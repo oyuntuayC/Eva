@@ -13,3 +13,19 @@ function translate(text, languageIn, languageOut) {
     throw new Error(`Failed to translate '${text}'. Status code: ${xhr.status}`);
   }
 }
+
+var languageSelector='<div class="language-selector" style="display: none;">\
+  <label for="language" style="color: white;">Choose your language:</label>\
+  <select id="language" name="language">\
+    <option value="en">Select Language</option>\
+    <option value="en">English</option>\
+    <option value="ca">Catalan</option>\
+    <option value="es">Español</option>\
+    <option value="es">Chinese</option>\
+  </select>\
+  <div class="language-background" style="z-index: -999;">\
+  </div>\
+</div>'
+
+document.querySelector("#chat").insertAdjacentHTML('afterbegin',languageSelector);
+

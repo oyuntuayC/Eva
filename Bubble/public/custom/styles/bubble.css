@@ -47,11 +47,13 @@
 	border-radius: 50px;
     height: 31px;
     line-height: 31px;
+    padding-left: 51px;
 }
 .speech-switch{
 	width: 100%;
 	position: relative;
 	display: flex;
+    align-items: center;
 }
 .loading{
 	position: absolute;
@@ -74,10 +76,12 @@ img{
 	border-radius: 15px 15px 15px 15px !important;
 }
 .o_event_container{
-    margin: -8px -16px;
+    margin: 0 6px -8px;
     overflow: hidden;
     border-radius: 15px 15px 15px 15px;
     border: 0;
+    display: inline-block;
+    width: 260px;
 }
 .o_card__footer p.other_data--place {
     font-weight: bold;
@@ -109,8 +113,76 @@ img{
     border-top: 1px solid transparent;
     border-radius: 0 0 3px 3px;
 	background: white;
+    white-space: normal;
 }
 .o_card__footer p.main a, .o_card__footer p.main a:hover {
     color: #050607 !important;
     text-decoration: none;
 }
+.o_card__head__image{
+    height: 120px;
+    object-fit: cover;
+    object-position: center;
+}
+.calender{
+	border-width: 0;
+    overflow: hidden;
+    height: 420px;
+}
+div.bubble.calender.say > span {
+    position: relative;
+    top: -35px;
+    left: -10px;
+}
+.event{
+	white-space: nowrap;
+	overflow-x: scroll;
+	background: transparent !important;
+	max-width: none;
+	padding-left: 0px;
+    width:100% !important;
+}
+.language-button{
+    position: absolute;
+    width: 24px;
+    height: 23px;
+    margin-bottom: 0px !important;
+    margin-left: 7px !important;
+    padding: 8px !important;
+    border-radius: 50% !important;
+    text-align: center;
+    background: transparent !important;
+}
+.language-button:hover {
+    background-color: rgb(220, 220, 220) !important;
+}
+.language-selector {
+    font-size: 1rem;
+    margin: 10px 0;
+    z-index: 999;
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: #0000008a;
+    margin-top: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.language-selector label {
+    margin-right: 10px;
+}
+
+.language-selector select {
+    font-size: 1rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.language-background{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
