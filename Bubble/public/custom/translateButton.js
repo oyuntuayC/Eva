@@ -3,7 +3,7 @@ var languageButton = document.createElement("div");
 languageButton.setAttribute("class", "bubble language-button");
 var svgVoice = document.createElement("img");
 svgVoice.setAttribute("src", "./translate.svg");
-svgVoice.setAttribute("style", "width:22px;height:22px;cursor:pointer");
+svgVoice.setAttribute("style", "width:22px;height:22px;cursor:pointer;border-radius: 0px !important;");
 languageButton.appendChild(svgVoice);
 inputSwitch.appendChild(languageButton);
 

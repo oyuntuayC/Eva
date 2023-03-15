@@ -190,3 +190,7 @@ div.bubble.calender.say > span {
 .bubble-container{
     max-width:none !important;
 }
+
+.enter-button{
+    right:7px;
+}
